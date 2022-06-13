@@ -1,11 +1,11 @@
 <template>
   <div class="suggest-register-page">
-    <GlobalMain title="제안" />
-    <h2>제안글 </h2>
+    <GlobalMain title="의제발굴" />
+    <h2>의제발굴 </h2>
     <section class="first-row">
       <div class="day-range">
         <div class="input-label">
-          제안 기간
+          의제발굴 기간
         </div>
         <div class="date-pickers">
           <el-date-picker
@@ -35,7 +35,7 @@
     </section>
     <section class="form-row">
       <div class="input-label">
-        제안 제목
+        의제발굴 제목
       </div>
       <div>
         <el-input v-model="form.title" placeholder="제안의 제목을 작성해주세요." />
@@ -43,7 +43,7 @@
     </section>
     <section v-show="!isChildrenType" class="form-row text-area">
       <div class="input-label">
-        제안 배경
+        의제발굴 배경
       </div>
       <div>
         <el-input v-model="form.pro_content1" type="textarea" :rows="4" placeholder="제안을 작성하게된 이유를 요약해서 작성해주세요." />
@@ -51,7 +51,7 @@
     </section>
     <section class="form-row text-area">
       <div class="input-label">
-        주요 내용
+        의제발굴 내용
       </div>
       <div>
         <el-input v-model="form.pro_content2" type="textarea" :rows="4" placeholder="제안하고 싶은 내용을 구체적으로 작성해주세요." />
@@ -59,7 +59,7 @@
     </section>
     <section v-show="!isChildrenType" class="form-row text-area">
       <div class="input-label">
-        기대 효과
+        의제발굴 효과
       </div>
       <div>
         <el-input v-model="form.pro_content3" type="textarea" :rows="4" placeholder="제안을 통해 가져올 효과가 무엇인가요?" />
@@ -67,21 +67,21 @@
     </section>
     <section class="form-row warning">
       <div class="input-label">
-        제안글 작성 주의사항
+        의제발굴 작성 주의사항
       </div>
       <div>
         <ul>
           <li>
-            ✤ 충청남도 학생의 권리를 실현하기 위한 정책을 제안해주세요.
+            ✤ 충청남도 학생의 권리를 실현하기 위한 정책을 의제발굴 해주세요.
           </li>
           <li>
-            ✤ 일반 통념상 실현이 가능하다고 생각하는 제안을 등록해주세요.
+            ✤ 일반 통념상 실현이 가능하다고 생각하는 의제발굴을 등록해주세요.
           </li>
           <li>
-            ✤ 제안하는 이유에 대해 깊이 생각하고, 객관적인 근거를 들어주세요.
+            ✤ 의제발굴하는 이유에 대해 깊이 생각하고, 객관적인 근거를 들어주세요.
           </li>
           <li>
-            ✤ 단순 비판, 건의, 불만 사항은 제안에 해당되지 않으며 예고 없이 삭제될 수 있습니다.
+            ✤ 단순 비판, 건의, 불만 사항은 의제발굴에 해당되지 않으며 예고 없이 삭제될 수 있습니다.
           </li>
           <li>
             ✤ 여러분 스스로 프로젝트를 실현하고 싶은 것은 「희망나눔」메뉴를 활용해주세요.
@@ -90,14 +90,14 @@
       </div>
       <div class="agree-checkbox">
         <input id="agree" v-model="form.agree" type="checkbox" name="">
-        <label for="agree">제안글 작성에 대한 주의사항을 확인하였으며, 위 사항에 동의합니다.</label>
+        <label for="agree">의제발굴 작성에 대한 주의사항을 확인하였으며, 위 사항에 동의합니다.</label>
       </div>
       <div class="submit-btns">
         <el-button @click="goPage('/excavation-list')">
           돌아가기
         </el-button>
         <el-button @click="registerExcavation">
-          제안 글 {{ isEditMode ? '수정' : '등록' }}
+          의제발굴 글 {{ isEditMode ? '수정' : '등록' }}
         </el-button>
       </div>
     </section>

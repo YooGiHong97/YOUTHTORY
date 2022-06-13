@@ -129,6 +129,14 @@ export default {
     },
     async updateComment ({ comment }) {
       try {
+        // eslint-disable-next-line no-unused-vars
+        const res = await this.$axios.$get('/commnet/update_comment.do', {
+          params: {
+            idx: this.editCommentIdx,
+            comment: this.editCommentValue,
+            user_idx: this.getUserInfo.idx
+          }
+        })
         this.editCommentIdx = null
         this.editCommentValue = null
         await this.GET_SUGGEST_DETAIL({ idx: this.$route.query.idx })

@@ -1,42 +1,57 @@
 <template>
   <div>
     <div class="suggest-register-page">
-      <GlobalMain title="자율게시판 글쓰기" />
+      <GlobalMain title="자율게시판" />
       <form enctype="multipart/form-data" @submit.prevent="onSubmit">
         <section class="form-row">
           <div class="input-label">
             게시글 제목
           </div>
-          <div>
-            <input type="text" name="commu_sub" v-model="form.commu_sub" placeholder="게시글의 제목을 작성해주세요." @change="onCommuSub">
+          <div class="sit1">
+            <input type="text" name="commu_sub" v-model="form.commu_sub"  placeholder="게시글의 제목을 작성해주세요." @change="onCommuSub">
           </div>
         </section><br>
         <section class="form-row">
           <div class="input-label">
             URL 등록
           </div>
-          <div>
-            <input type="text" name="video_url" v-model="form.video_url" placeholder="게시글의 제목을 작성해주세요." @change="onVideoUrl">
+          <div class="sit2">
+            <input type="text" name="video_url" v-model="form.video_url" placeholder="URL 주소를 작성해주세요." @change="onVideoUrl">
           </div>
         </section><br>
         <section class="form-row">
           <div class="input-label">
             게시글 작성
           </div>
-          <div>
-            <input type="text" name="commu_con" v-model="form.commu_con" placeholder="게시글의 제목을 작성해주세요." @change="onCommuCon">
+          <div class="sit3">
+            <input type="text" name="commu_con" v-model="form.commu_con"  placeholder="asfd 작성해주세요." @change="onCommuCon">
           </div>
         </section><br>
         <section class="form-row">
           <div class="form-group">
-            <p class="files-message"> 500kb 미만인 첨부가능한 확장자( IMG, PNG, JPG, JPEG, WORD, PDF )</p>
+            <p class="files-asd"> 파일첨부</p>
           </div>
         </section>
         <section id="rowsss" class="form-row">
           <div class="form-group">
             <input type="file" @change="onFileUpload">
           </div>
+          <ul>
+            <li v-for="(image, key ) in form.file_list" :key="image.file_idx">
+              <input :value="image.file_idx" name="fileSelection" :id="image.file_idx" type="checkbox" v-model="fileToDelete" @change="selectChange(image.file_idx)"></input>{{ image.origin_name }} &nbsp; Delete
+            </li>
+          </ul>
         </section>
+        <!-- <section id="rowsss" class="form-row">
+          <div class="form-group">
+            <input type="file" @change="onFileUpload">
+            <span v-model="form.commu_con" type="text" name="commu_con" ></span>
+          </div>
+          <div class="file-checkbox">
+            <input id="agree2" v-model="name" type="checkbox" name="">
+            <label for="agree2">Delete</label>
+          </div>
+        </section> -->
         <section class="form-row warning">
           <div class="input-label">
             게시글 작성 주의사항
@@ -44,31 +59,19 @@
           <div>
             <ul>
               <li>
-                ✤ TEST 1
-              </li>
-              <li>
-                ✤ TEST 2
-              </li>
-              <li>
-                ✤ TEST 3
-              </li>
-              <li>
-                ✤ TEST 4
-              </li>
-              <li>
-                ✤ TEST 5
+                ✤ 단순 비판, 건의, 불만 사항은 게시글에 해당되지 않으며 예고 없이 삭제될 수 있습니다.
               </li>
             </ul>
           </div>
           <div class="agree-checkbox">
             <input id="agree" v-model="form.agree" type="checkbox" name="">
-            <label for="agree">제안글 작성에 대한 주의사항을 확인하였으며, 위 사항에 동의합니다.</label>
+            <label for="agree">게시글 작성에 대한 주의사항을 확인하였으며, 위 사항에 동의합니다.</label>
           </div>
           <div class="submit-btns">
             <el-button @click="goPage('/freeboard-list')">
               돌아가기
             </el-button>
-            <button @click="registerFreeboard">
+            <button>
               게시글 {{ isEditMode ? '수정' : '등록' }}
             </button>
           </div>
@@ -89,9 +92,7 @@ export default {
   async asyncData ({ store, route }) {
     console.log(store)
     if (route.query.idx) {
-      const { query: { type } } = route
-      const isChildrenType = type === 'children'
-      await store.dispatch('GET_FREEBOARD_DETAIL', { idx: route.query.idx, isChildrenType })
+      await store.dispatch('GET_FREEBOARD_DETAIL', { idx: route.query.idx })
     }
   },
   data () {
@@ -102,12 +103,20 @@ export default {
       commu_sub: '',
       commu_con: '',
       video_url: '',
+      recieved_files: null,
+      fileToDelete: null,
+      file_index_to_delete: null,
+      file_list_path: '/freeboard-list',
       form: {
         commu_sub: '',
         commu_con: '',
         name: '',
         video_url: '',
+        FILE: null,
         agree: false
+      },
+      config: {
+        headers: { 'Content-Type': 'multipart/form-data' }
       }
     }
   },
@@ -119,10 +128,6 @@ export default {
     ]),
     isEditMode () {
       return !!this.$route.query.idx
-    },
-    isChildrenType () {
-      const { type } = this.$route.query
-      return type === 'children'
     }
   },
   created () {
@@ -131,12 +136,14 @@ export default {
         commu_sub: commuSub,
         commu_con: commuCon,
         name: Name,
-        video_url: videoUrl
+        video_url: videoUrl,
+        file_list: fileList
       } = this.getFreeboardDetail
       this.form.commu_sub = commuSub
       this.form.commu_con = commuCon
       this.form.name = Name
       this.form.video_url = videoUrl
+      this.form.file_list = fileList
     }
   },
   methods: {
@@ -154,7 +161,31 @@ export default {
     },
     onFileUpload (event) {
       console.log('TARGET4:', event.target.files[0])
-      this.FILE = event.target.files[0]
+      const fileData = event.target.files[0]
+      this.fileName = fileData
+    },
+    fileReceived (value) {
+      this.recieved_files = value
+    },
+    selectChange (value) {
+      this.file_index_to_delete = value
+    },
+    async deleteThisfile (value) {
+      this.file_index_to_delete = value
+      console.log(value)
+      console.log(this.fileToDelete)
+      if (this.fileToDelete) {
+        const formData = new FormData()
+        // append the values with key, value pair
+        formData.append('del_file', value)
+        formData.append('idx', this.getFreeboardDetail.idx)
+        formData.append('commu_sub', this.form.commu_sub)
+        formData.append('video_url', this.form.video_url)
+        formData.append('commu_con', this.form.commu_con)
+        formData.append('name', this.getUserInfo.user_name)
+        formData.append('user_idx', this.getUserInfo.idx)
+        await this.$axios.$post('/community/community_update.do', formData, this.config)
+      }
     },
     async onSubmit () {
       try {
@@ -165,17 +196,22 @@ export default {
         // console.log('idx', this.getFreeboardDetail.idx)
         // upload file
         // formdata object
+        // console.log('DDDDDDDDD FORM:', this.form)
         const formData = new FormData()
         // append the values with key, value pair
-        formData.append('main', this.FILE)
+        formData.append('main', this.fileName)
         formData.append('idx', this.getFreeboardDetail.idx)
-        formData.append('commu_sub', this.commu_sub)
-        formData.append('video_url', this.video_url)
-        formData.append('commu_con', this.commu_con)
+        formData.append('commu_sub', this.form.commu_sub)
+        formData.append('video_url', this.form.video_url)
+        formData.append('commu_con', this.form.commu_con)
         formData.append('name', this.getUserInfo.user_name)
         formData.append('user_idx', this.getUserInfo.idx)
+        if (this.file_index_to_delete != null) {
+          formData.append('del_file', this.file_index_to_delete)
+        }  
         // const config = { headers: { 'content-type': 'multipart/form-data'} }
-        await this.$axios.$post(this.isEditMode ? '/community/community_update.do' : '/community/community_insert.do', formData)
+        await this.$axios.$post(this.isEditMode ? '/community/community_update.do' : '/community/community_insert.do', formData, this.config)
+        this.$router.push(this.file_list_path)
       } catch (e) {
         console.error(e)
       }
@@ -232,5 +268,5 @@ export default {
 .container {
   max-width: 600px;
 }
-//
+
 </style>

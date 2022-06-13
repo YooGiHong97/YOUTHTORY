@@ -14,13 +14,13 @@
       <p>
         <Youtube v-show="freeboard.video_url" ref="youtube" :video-id="getIdFromUrl(freeboard.video_url)" @playing="playing" />
         <br v-show="freeboard.video_url">
-        <br v-show="freeboard.video_url">
+        <!-- <br v-show="freeboard.video_url"> -->
         {{ freeboard.commu_con }}
         <template v-for="(image, index) in imageList">
           <img
-            :key="index"
+            :key= "index"
             class="care-images"
-            :src="`http://115.85.180.96:8080${image.file_url}`"
+            :src="`https://youthapi.co.kr${image.file_url}`"
             alt=""
           >
         </template>
@@ -69,7 +69,7 @@ export default {
       freeboard: state => state.freeboardDetail
     }),
     imageList () {
-      console.log('file_list', this.freeboard.file_list)
+      // console.log('file_list', this.freeboard.file_list)
       return this.freeboard.file_list
     }
   },

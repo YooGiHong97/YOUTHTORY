@@ -16,18 +16,34 @@
       <button v-else @click="handleLogout">
         <span class="logout-border">로그아웃</span>
       </button>
-      <button @click="(e) => goPage(e, '/suggest-list?type=children')">
-        <span class="logout-border">소개</span>
-      </button>
-      <button @click="(e) => goPage(e, '/suggest-list')">
-        <span class="logout-border">정보</span>
-      </button>
-      <button @click="(e) => goPage(e, '/suggest-list?type=children')">
-        <span class="logout-border">참여</span>
-      </button>
-      <button @click="(e) => goPage(e, '/suggest-list?type=children')">
-        <span class="logout-border">설문</span>
-      </button>
+      <ul id="main-menu">
+        <li><a href="#" style="color:black; width:50px;">소개</a>
+          <ul id="sub-menu">
+            <li><nuxt-link class="alal" to="/platform-intro" aria-label="subemnu">플랫폼 소개</nuxt-link></li>
+            <li><nuxt-link class="alal" to="/announce-list" aria-label="subemnu">공지사항</nuxt-link></li>
+            <li><nuxt-link class="alal" to="/partners" aria-label="subemnu">천안시 청소년<br>유관기관 소개</nuxt-link></li>
+          </ul>
+        </li>
+        <li><a href="#" style="color:black">정보</a>
+          <ul id="sub-menu">
+            <li><nuxt-link class="alal" to="/notice" aria-label="subemnu">교육자료 </nuxt-link></li>
+            <li><nuxt-link class="alal" to="/freeboard-list" aria-label="subemnu">자율게시판</nuxt-link></li>
+          </ul>
+        </li>
+        <li><a href="#" style="color:black">참여</a>
+          <ul id="sub-menu">
+            <li><nuxt-link class="alal" to="/excavation-list" aria-label="subemnu"> 의제발굴</nuxt-link></li>
+            <li><nuxt-link class="alal" to="/excavation-list?type=children" aria-label="subemnu">의제발굴 (어린이)</nuxt-link></li>
+            <li><nuxt-link class="alal" to="/suggest-list" aria-label="subemnu">정책제안</nuxt-link></li>
+            <li><nuxt-link class="alal" to="/suggest-list?type=children" aria-label="subemnu">정책제안 (어린이)</nuxt-link></li>
+          </ul>
+        </li>
+        <li><a href="#" style="color:black">설문</a>
+          <ul id="sub-menu">
+            <li><nuxt-link class="alal" to="/survey" aria-label="subemnu">청소년설문</nuxt-link></li>
+          </ul>
+        </li>
+      </ul>
     </SlideMenu>
     <div class="navbar">
       <div class="pc global-menu">
@@ -155,6 +171,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style>

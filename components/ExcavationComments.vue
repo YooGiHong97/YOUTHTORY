@@ -16,7 +16,7 @@
         제안 답변
       </div>
       <div class="paragraph">
-        <!-- {{ getExcavationDetail.comment }} -->
+        {{ getExcavationDetail.ans_con }}
       </div>
     </div>
     <template v-if="writeComment">
@@ -101,10 +101,10 @@ export default {
       'isLoggedIn',
       'getUserInfo',
       'getExcavationDetail'
-    ])
-    // hasExcavationAnswer () {
-    //   return !!this.getExcavationDetail.comment
-    // }
+    ]),
+    hasExcavationAnswer () {
+      return !!this.getExcavationDetail.ans_con
+    }
   },
   methods: {
     ...mapActions([
@@ -129,6 +129,14 @@ export default {
     },
     async updateComment ({ comment }) {
       try {
+        // eslint-disable-next-line no-unused-vars
+        const res = await this.$axios.$get('/commnet/update_comment_exc.do', {
+          params: {
+            idx: this.editCommentIdx,
+            comment: this.editCommentValue,
+            user_idx: this.getUserInfo.idx
+          }
+        })
         this.editCommentIdx = null
         this.editCommentValue = null
         await this.GET_EXCAVATION_DETAIL({ idx: this.$route.query.idx })
@@ -148,7 +156,7 @@ export default {
     async removeComment ({ comment }) {
       try {
         if (!window.confirm('댓글을 삭제하시겠습니까?')) { return }
-        await this.$axios.$get('/commnet/delete_comment.do', {
+        await this.$axios.$get('/commnet/delete_comment_exc.do', {
           params: {
             idx: comment.idx,
             user_idx: this.getUserInfo.idx
@@ -186,7 +194,7 @@ export default {
     async addComment () {
       if (!this.textarea.length) { return alert('의견을 입력해주세요.') }
       if (!this.isLoggedIn) { return alert('로그인 해주세요') }
-      const res = await this.$axios.$get('/commnet/insert_comment.do', {
+      const res = await this.$axios.$get('/commnet/insert_comment_exc.do', {
         params: {
           comment: this.textarea,
           com_name: this.getUserInfo.user_name,

@@ -2,7 +2,7 @@
   <div class="suggest-agree">
     <button class="wrapper" @click="handleAgree">
       <img src="@/assets/images/icon_like_zero.png" alt="">
-      <span class="">제안에 공감해요</span>
+      <span class="">의제발굴에 공감해요</span>
       <h4>{{ likes }}</h4>
     </button>
   </div>
@@ -27,7 +27,7 @@ export default {
   methods: {
     async handleAgree () {
       if (!this.isLoggedIn) { return alert('로그인 해주세요.') }
-      const res = await this.$axios.$get('/agreement/insert_agreement.do', {
+      const res = await this.$axios.$get('/agreement/insert_agreement_exc.do', {
         params: {
           agr_pro_idx: this.$route.query.idx,
           agr_user_idx: this.getUserInfo.idx
@@ -35,8 +35,8 @@ export default {
       })
       const REQUEST_SUCCESS = 0
       if (res === REQUEST_SUCCESS) {
-        await this.$store.dispatch('GET_Excavation_DETAIL', { idx: this.$route.query.idx })
-        return alert('제안에 공감했습니다.')
+        await this.$store.dispatch('GET_EXCAVATION_DETAIL', { idx: this.$route.query.idx })
+        return alert('의제발굴에 공감했습니다.')
       }
       if (typeof res === 'string') {
         return alert('이미 동의 했습니다.')

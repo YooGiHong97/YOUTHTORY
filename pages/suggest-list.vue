@@ -1,6 +1,7 @@
 <template>
   <div class="suggest-page">
-    <GlobalMain title="정책제안" />
+    <span v-if="isChildren==''"><GlobalMain title="정책제안" /></span>
+    <span v-else><GlobalMain title="정책제안 (어린이)" /></span>
     <!-- 정책제안 -->
     <section class="suggest-types">
       <div v-for="category in categoryMenus" :key="category.src">

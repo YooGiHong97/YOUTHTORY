@@ -1,7 +1,7 @@
 <template>
   <div class="suggest-page">
-    <GlobalMain title="의제발굴" />
-    <!-- 정책제안 -->
+    <span v-if="isChildren==''"><GlobalMain title="의제발굴" /></span>
+    <span v-else><GlobalMain title="의제발굴 (어린이)" /></span>
     <section class="suggest-types">
       <div v-for="category in categoryMenus" :key="category.src">
         <button :class="[category.label === selectedTypeMenu ? 'selected': '']" @click="handleTypeMenu(category.label)">
@@ -18,7 +18,7 @@
       </div>
       <div class="suggest-search">
         <el-button to="/excavation-register" @click="goPage('/excavation-register')">
-          의견 제안하기
+          의제발굴 제안하기
         </el-button>
       </div>
       <div class="total">
@@ -69,7 +69,7 @@ export default {
       ],
       selectedTabMenu: '진행중',
       tabMenus: [
-        '진행중', '완료된 제안', '실현된 제안'
+        '진행중', '완료된 발굴', '실현된 발굴'
       ],
       excavationList: []
     }
@@ -87,12 +87,12 @@ export default {
   },
   watch: {
     '$route' (to, from) {
-      const url = this.isChildren ? '/excavation/insert_excavation_chil.do' : '/excavation/insert_excavation.do'
+      const url = this.isChildren ? '/excavation/excavation_list_chil.do' : '/excavation/excavation_list.do'
       this.getExcavationList(url)
     }
   },
   created () {
-    const url = this.isChildren ? '/excavation/insert_excavation_chil.do' : '/excavation/insert_excavation.do'
+    const url = this.isChildren ? '/excavation/excavation_list_chil.do' : '/excavation/excavation_list.do'
     this.getExcavationList(url)
   },
   methods: {
@@ -108,13 +108,13 @@ export default {
       const map = !this.isChildren
         ? {
             진행중: '/excavation/excavation_list.do',
-            '완료된 제안': '/excavation/excavation_end_list.do',
-            '실현된 제안': '/excavation/excavation_eealized_list.do'
+            '완료된 발굴': '/excavation/excavation_end_list.do',
+            '실현된 발굴': '/excavation/excavation_realized_list.do'
           }
         : {
             진행중: '/excavation/excavation_list_chil.do',
-            '완료된 제안': '/excavation/excavation_end_list_chil.do',
-            '실현된 제안': '/excavation/excavation_eealized_list_chil.do'
+            '완료된 발굴': '/excavation/excavation_end_list_chil.do',
+            '실현된 발굴': '/excavation/excavation_realized_list_chil.do'
           }
       this.getExcavationList(map[menu])
       this.selectedTabMenu = menu

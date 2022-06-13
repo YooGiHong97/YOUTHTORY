@@ -23,7 +23,7 @@
           >
         </template>
       </p>
-      <nuxt-link to="/notice" style="margin-top:-150px">
+      <nuxt-link to="/notice" style="margin-top:-90px">
         목록으로
       </nuxt-link>
     </section>

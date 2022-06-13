@@ -726,9 +726,24 @@
 .files-click{
   font-size:1.6rem;
 }
-.files-message{
+@media screen and (min-width:768px){
+.files-asd{
   font-size:1.8rem;
   font-weight: bold;
+}
+#rowsss{
+  margin-top:-50px;
+}
+}
+.files-asd{
+  font-size:1.4rem;
+}
+.files-asd{
+  font-size:2.2rem;
+  margin-top:30px;
+}
+#rowsss{
+  margin-top:-50px;
 }
 
 .suggest-detail {
@@ -779,14 +794,16 @@
     border-top: 1px solid #C6C6C6;
     padding-top: 30px;
   }
-  #rowsss{
-    margin-top:-50px;
+  .first-row2 {
+    border-top: 1px solid #C6C6C6;
+    padding-top: 0px;
   }
   .form-row {
     margin-top: 20px;
     ul {
       border-radius: 5px;
       background-color: #FCFBEB;
+      width:1050px;
       padding: 20px 14px;
       line-height: 1.4;
       li {
@@ -858,7 +875,7 @@
     }
     .input-label {
       margin-right: 10px;
-      font-size: 2rem;
+      font-size: 1.6rem;
     }
     .form-row {
       display: flex;
@@ -890,7 +907,250 @@
     }
   }
 }
-
+.survey-page {
+  &__gnb {
+    background-image: url('../images//main-gnb_mobile.png');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 220px 0 100px;
+    //////////////////////////////////////////////////
+    // 2022-05-23/오늘 방문자 수 scss/유기홍
+    // 2022-05-23/today-hit scss/yoogihong
+    //////////////////////////////////////////////////
+    // .today-hit p{
+    //   font-size:2em;
+    //   margin-bottom:14px;
+    // }
+    //////////////////////////////////////////////////
+    .d-day, h2 {
+      font-size: 2rem;
+      text-align: center;
+    }
+    .d-day {
+      background-color: #92CA83;
+      color: #036C2C;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    h2 {
+      width: 67%;
+      margin-bottom: 50px;
+    }
+    .el-progress {
+      width: 85%;
+      margin-bottom: 50px;
+      &-bar__innerText {
+        color: black;
+      }
+    }
+    .achieve {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .involve {
+      font-size: 1.4rem;
+      span:last-of-type {
+        margin-left: 20px;
+      }
+    }
+    .participate-survey {
+      background-color: #92CA83;
+      color: #036C2C;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-top: 36px;
+    }
+    .participate-survey2 {
+      background-color: #92CA83;
+      color: #036C2C;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-top: 36px;
+      opacity:0.4;
+      pointer-events: none;
+    }
+  }
+  &__part {
+    padding: 35px;
+    .notice, .popular-suggest {
+      height: 196px;
+      overflow: hidden;
+      border: 2px solid #62986E;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 40px;
+      box-shadow : 4px 4px 0px 3px #62986e;
+      .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h3 {
+          font-size: 2.4rem;
+          font-weight: 700;
+        }
+        i {
+          font-size: 2.7rem;
+          color: #7DC28C;
+          font-weight: 700;
+        }
+      }
+    }
+    .notice {
+      .content {
+        margin-top: 24px;
+        font-size: 1.5rem;
+        width:100%;
+        padding:0 5px;
+        overflow:hidden;
+        text-overflow:ellipsis;
+        white-space:nowrap;
+      }
+    }
+    .popular-suggest {
+      .content {
+        font-size: 1.5rem;
+        margin-top: 24px;
+      }
+      .status {
+        display: flex;
+        align-items: normal;
+        justify-content: flex-end;
+        margin-top: 25px;
+        span {
+          font-size: 1.7rem;
+          font-weight: 700;
+          &:first-of-type {
+            margin-right: 10px;
+          }
+        }
+        img {
+          margin-right: 3px;
+          height: 18px;
+        }
+      }
+    }
+  }
+  &__suggests {
+    background-color: #F5F5F5;
+    padding: 35px;
+    h3 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 35px;
+    }
+    .suggest-swiper {
+      .box {
+        padding: 20px;
+        border: 1px solid #D9D9D9;
+        border-radius: 15px;
+        background-color: white;
+        .title {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .category {
+            display: flex;
+            align-items: center;
+            img {
+              height: 34px;
+              margin-right: 7px;
+            }
+            > span {
+              font-size: 1.8rem;
+            }
+          }
+          .status {
+            font-size: 1.4rem;
+            padding: 6px 10px;
+            color: white;
+            background-color: #4B9A6A;
+            border-radius: 10px;
+          }
+        }
+        .content {
+          margin-top: 28px;
+          font-size: 1.6rem;
+        }
+      }
+    }
+  }
+  .pc {
+    display: none;
+  }
+  @media only screen and (min-width: 769px) {
+    &__gnb {
+      background-image: url('../images//main-gnb_pc.png');
+      background-size: cover;
+      background-position: center center;
+      h2 {
+        margin-top: 10px;
+      }
+      .el-progress {
+        width: 40%;
+      }
+      .involve {
+        font-size: 1.6rem;
+      }
+    }
+    &__part {
+      padding-top: 70px;
+      display: flex;
+      justify-content: center;
+      max-width: $PC_SIZE;
+      margin: 0 auto;
+      .notice, .popular-suggest {
+        width: 40%;
+      }
+      .notice {
+        margin-right: 30px;
+      }
+      .popular-suggest {
+        position: relative;
+        .status {
+          position: absolute;
+          right: 20px;
+          bottom: 20px;
+        }
+      }
+    }
+    &__suggests {
+      .swiper-container {
+        max-width: $PC_SIZE;
+        .swiper-button-prev,
+        .swiper-button-next {
+          color: #62986E;
+        }
+        .swiper-button-prev {
+          left: 0;
+        }
+        .swiper-button-next {
+          right: 0;
+        }
+      }
+      .box {
+        width: 70%;
+        margin: 0 auto;
+      }
+    }
+    .pc {
+      display: block;
+    }
+    .mobile {
+      display: none;
+    }
+  }
+}
 .main-page {
   &__gnb {
     background-image: url('../images//main-gnb_mobile.png');
@@ -1165,7 +1425,7 @@
           border-top: 1px solid #62986E;
           border-bottom: 1px solid #62986E;
           color: #62986E;
-          font-size: 2rem;
+          font-size: 2.05rem;
           padding: 24px 0;
           font-weight: 700;
           .title {
@@ -1221,19 +1481,40 @@
           margin-left:360px;
         }
         .age {
-          flex-basis: 12%;
+          flex-basis: 10%;
           text-align: center;
         }
         .gender {
-          flex-basis: 12%;
+          flex-basis: 10%;
           text-align: center;
         }
         .date {
-          flex-basis: 12%;
+          flex-basis: 10%;
           text-align: center;
         }
         .secession {
-          flex-basis: 12%;
+          flex-basis: 10%;
+          text-align: center;
+        }
+        //설문
+        .surv-show{
+          flex-basis: 8.7%;
+          text-align: center;
+        }
+        .surv-regdate{
+          flex-basis: 10.5%;
+          text-align: center;
+        }
+        .surv-editdate{
+          flex-basis: 11%;
+          text-align: center;
+        }
+        .surv-participants{
+          flex-basis: 10%;
+          text-align: center;
+        }
+        .surv-target{
+          flex-basis: 11.5%;
           text-align: center;
         }
 
@@ -1247,10 +1528,11 @@
           // border-bottom: 1px solid #62986E;
           display:flex;
           justify-content: end;
-          color: #000000;
+          color: #63986E;
           font-size: 1.8rem;
-          padding: 24px 0;
+          padding: 15px 0;
           font-weight: 700;
+          margin-top:-40px;
           .title {
             font-size: 2rem;
           }
@@ -1379,7 +1661,14 @@
   }
 }
 
-
+.board{
+  height:70px;
+}
+.board::placeholder{
+  position:absolute;
+  top:10px;
+  left:10px;
+}
 .notice-detail-page {
   &__list {
     margin: 40px 35px 150px;
@@ -1417,11 +1706,13 @@
       border-bottom: 1px solid #DBDBDB;
       iframe {
         width: 100%;
+        height:570px;
       }
       .care-images {
         display: block;
+        margin: 0 auto;
         margin-top: 15px;
-        max-width: 100%;
+        max-width: 350px;
       }
     }
     a {
@@ -1540,41 +1831,93 @@
     }
   }
 }
+.inputs1{
 
+}
+.inputs1 input{
+  width: 899px;
+  height: 40px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: solid 2px #E3E3E3;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: both;
+}
+.inputs2 input{
+  width: 899px;
+  height: 40px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: solid 2px #E3E3E3;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: both;
+}
+.inputs3 input{
+  width: 899px;
+  height: 100px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: solid 2px #E3E3E3;
+  border-radius: 5px;
+  font-size: 16px;
+  resize: both;
+}
+.inputs1 input::placeholder{
+  font-size:1.3rem;
+  padding-left:5px;
+  vertical-align: left top;
+}
+.inputs2 input::placeholder{
+  font-size:1.3rem;
+  padding-left:5px;
+  vertical-align: left top;
+}
+.inputs3 input::placeholder{
+  font-size:1.3rem;
+  padding-left:5px;
+  position:absolute; left:10px;
+  top:10px;
+}
 // 플랫폼 소개 / 20220531 / 유기홍
 // platform-intro / 20220531 / yoogihong
 .platform-cont{
   display:flex;
   justify-content: center;
   flex-direction: column;
-  text-align: center;
   padding: 10% 0 0 0;
+  color:#62986E
 }
 .platform-intro1{
   padding: 5px;
+  text-align:center;
   font-size:2.5rem;
   color:#1F5735;
+  letter-spacing:-2.5px;
 }
 .platform-intro1::after{
   content:"";
   display: block;
-  width:110px;
+  width:100px;
   border-bottom: 5px solid #DFEDB2;
-  margin: 0 auto;
+  margin: -6px auto;
   opacity:1;
 }
 .platform-intro2{
+  letter-spacing:-2.5px;
+  text-align:center;
   padding: 5px;
   font-size:2.5rem;
-  margin-top:20%;
+  margin-top:10%;
   color:#1F5735;
 }
 .platform-intro2::after{
   content:"";
   display: block;
-  width:310px;
+  width:275px;
   border-bottom: 5px solid #DFEDB2;
-  margin: 0 auto;
+  margin: -6px auto;
   opacity:1;
 }
 .platform-intro-menu1{
@@ -1593,11 +1936,23 @@
   font-size:1.7rem;
   margin-top:5%;
 }
-
+.text-images{
+  display:inline-block; 
+}
 .platform-content1{
   font-size:1.8rem;
-  margin-top:5%;
+  margin-top:-2%;
+  line-height:1.8;
+  letter-spacing:-1px;
+  margin-left:49px;
 }
+
+@media screen and (max-width:768px){
+  .platform-content1{
+    margin-left:5px;
+  }
+}
+
 
 .platform-content2{
   font-size:1.8rem;
@@ -1606,7 +1961,114 @@
 }
 ///////////////////////////
 
+@media screen and (max-width:1100px){
+  
+.sita1{
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  margin:0 auto;
+  max-width:799px;
+}
+.sitat1{
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  margin:0 auto;
+  max-width:799px;
+}
+.sita2{
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  margin:0 auto;
+}
+.sita3{
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  margin:0 auto;
 
+}
+.sita4{
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  margin:0 auto;
+
+}
+.sita5{
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  margin:0 auto;
+
+}
+.sita6{
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  margin:0 auto;
+
+}
+.partners-img3{
+  // border: 2px solid #c6c6c6;
+  padding: 25px;
+  margin-right:-555px;
+}
+.youth_banner_01{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_02{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_03{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_04{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_05{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_06{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_07{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_08{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_09{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_10{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_11{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_12{
+  width:280px;
+  margin-left:-10px;
+}
+.youth_banner_13{
+  width:280px;
+  margin-left:-10px;
+}
+}
 // 천안시 청소년 유관기관 소개 / 20220531 / 유기홍
 // partners / 20220531 / yoogihong
 .partners-cont{
@@ -1620,18 +2082,19 @@
 .partners1{
   border-bottom: 2px solid #c6c6c6;
   padding: 30px;
-  font-size:2rem;
+  font-size:2.1rem;
   color:#1F5735;
   margin-bottom:30px;
 }
 .partners1::after{
   content:"";
   display: block;
-  width:130px;
+  width:160px;
+  margin: -6px auto;
   border-bottom: 5px solid #DFEDB2;
-  margin: 0 auto;
   opacity:1;
 }
+
 .partners2{
   border-bottom: 2px solid #c6c6c6;
   padding: 30px;
@@ -1643,9 +2106,9 @@
 .partners2::after{
   content:"";
   display: block;
-  width:90px;
+  width:190px;
   border-bottom: 5px solid #DFEDB2;
-  margin: 0 auto;
+  margin: -6px auto;
   opacity:1;
 }
 .partners3{
@@ -1659,9 +2122,9 @@
 .partners3::after{
   content:"";
   display: block;
-  width:70px;
+  width:150px;
   border-bottom: 5px solid #DFEDB2;
-  margin: 0 auto;
+  margin: -6px auto;
   opacity:1;
 }
 .partners4{
@@ -1675,17 +2138,11 @@
 .partners4::after{
   content:"";
   display: block;
-  width:50px;
+  width:150px;
   border-bottom: 5px solid #DFEDB2;
-  margin: 0 auto;
+  margin: -6px auto;
   opacity:1;
 }
-
-.partners-img-cont img{
-  width:280px;
-  height:80px;
-}
-
 
 .partners-img1{
   // border: 2px solid #c6c6c6;
@@ -1698,6 +2155,7 @@
 .partners-img3{
   // border: 2px solid #c6c6c6;
   padding: 25px;
+  margin-left:-565px;
 }
 .partners-img4{
   // border: 2px solid #c6c6c6;
@@ -1715,4 +2173,184 @@
   // border: 2px solid #c6c6c6;
   padding: 25px;
 }
+.partners-img8{
+  // border: 2px solid #c6c6c6;
+  padding: 25px;
+}
+.partners-img9{
+  // border: 2px solid #c6c6c6;
+  padding: 25px;
+}
+.partners-img10{
+  // border: 2px solid #c6c6c6;
+  padding: 25px;
+}
+.partners-img11{
+  // border: 2px solid #c6c6c6;
+  padding: 25px;
+}
+.partners-img12{
+  // border: 2px solid #c6c6c6;
+  padding: 25px;
+}
+.partners-img13{
+  // border: 2px solid #c6c6c6;
+  padding: 25px;
+}
 ///////////////////////////
+.tigs input{
+  width:300px;
+  height:30px;
+}
+.tigs-con input{
+  width:500px;
+  height:100px;
+}
+.swiper {
+  height: 45vh;
+  width: 100%;
+  z-index:-2;
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+  }
+  .swiper-button-prev{
+    z-index:999;
+    position:absolute;
+    color:#ffffff;
+  }
+  .swiper-button-next{
+    z-index:999;
+    position:absolute;
+    color:#ffffff;
+  }
+}
+
+@media screen and (min-width:768px){
+.swiper {
+  height: 600px;
+  width: 100%;
+  z-index:-2;
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+  }
+  .swiper-button-prev{
+    z-index:999;
+    position:absolute;
+    color:#ffffff;
+  }
+  .swiper-button-next{
+    z-index:999;
+    position:absolute;
+    color:#ffffff;
+  }
+}
+}
+.sita1{
+  display:flex;
+  justify-content: center;
+  margin:0 auto;
+  max-width:799px;
+}
+.sitat1{
+  display:flex;
+  justify-content: center;
+  margin:0 auto;
+  max-width:799px;
+}
+.sita2{
+  display:flex;
+  justify-content: center;
+  margin:0 auto;
+}
+.sita3{
+  display:flex;
+  justify-content: center;
+  margin:0 auto;
+}
+.sita4{
+  display:flex;
+  justify-content: center;
+  margin:0 auto;
+}
+.sita5{
+  display:flex;
+  justify-content: center;
+  margin:0 auto;
+}
+.sita6{
+  display:flex;
+  justify-content: center;
+  margin:0 auto;
+}
+.youth_banner_01{
+  max-width:515px;
+}
+.youth_banner_02{
+  max-width:515px;
+}
+.youth_banner_03{
+  max-width:515px;
+}
+.youth_banner_04{
+  max-width:515px;
+}
+.youth_banner_05{
+  max-width:515px;
+}
+.youth_banner_06{
+  max-width:515px;
+}
+.youth_banner_07{
+  max-width:515px;
+}
+.youth_banner_08{
+  max-width:515px;
+}
+.youth_banner_09{
+  max-width:515px;
+}
+.youth_banner_10{
+  max-width:515px;
+}
+.youth_banner_11{
+  max-width:515px;
+}
+.youth_banner_12{
+  max-width:515px;
+}
+.youth_banner_13{
+  max-width:515px;
+}
+
+.sit1 input{
+  width:500px;
+  height:25px;
+  border-color:#c6c6c6;
+  border-radius:8px;
+}
+.sit2 input{
+  width:500px;
+  height:25px;
+  border-color:#c6c6c6;
+  border-radius:8px;
+}
+.sit3 input{
+  width:500px;
+  height:35px;
+  border-color:#c6c6c6;
+  border-radius:8px;
+}
+// .partners-img-cont a img{
+//   width:350px;
+//   height:80px;
+// }

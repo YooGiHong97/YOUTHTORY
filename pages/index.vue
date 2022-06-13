@@ -30,7 +30,7 @@
           <i class="el-icon-circle-plus-outline" />
         </div>
         <div v-for="notice in main.notiList" :key="notice.idx" class="content">
-          <nuxt-link :to="`/notice-detail?idx=${notice.idx}`">
+          <nuxt-link :to="`/announce-detail?idx=${notice.idx}`">
             - {{ notice.noti_sub }}
           </nuxt-link>
         </div>

@@ -16,6 +16,16 @@
     </section>
     <section class="notice-page__list pc">
       <div class="content">
+        <!-------------------------------------------------->
+        <!-- 2022-05-23/글쓰기 버튼/유기홍 -->
+        <!-- 2022-05-23/write-button/yoogihong -->
+        <!-------------------------------------------------->
+        <div class="row-bottom">
+          <el-button to="/freeboard-register" @click="goPage('/freeboard-register')">
+            글쓰기
+          </el-button>
+        </div>
+        <!-------------------------------------------------->
         <div class="row-header">
           <span class="no">No.</span>
           <span class="title">제목</span>
@@ -32,16 +42,6 @@
             <span class="view">{{ freeboard.commu_hit }}</span>
           </div>
         </nuxt-link>
-        <!-------------------------------------------------->
-        <!-- 2022-05-23/글쓰기 버튼/유기홍 -->
-        <!-- 2022-05-23/write-button/yoogihong -->
-        <!-------------------------------------------------->
-        <div class="row-bottom">
-          <el-button to="/freeboard-register" @click="goPage('/freeboard-register')">
-            글쓰기
-          </el-button>
-        </div>
-        <!-------------------------------------------------->
       </div>
     </section>
   </div>

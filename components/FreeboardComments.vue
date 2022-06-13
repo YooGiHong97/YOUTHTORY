@@ -7,7 +7,7 @@
       <el-button class="second btn" @click="handleFreeboard({type:'remove'})">
         삭제
       </el-button>
-      <!-- <el-button class="third" @click="goPage('/freeboard')">
+      <!-- <el-button class="third" @click="goPage('/freeboard-list')">
         목록으로
       </el-button> -->
     </div>
@@ -15,9 +15,9 @@
       <div class="title">
         게시글 답변
       </div>
-      <div class="paragraph">
+      <!-- <div class="paragraph">
         {{ getFreeboardDetail.comment }}
-      </div>
+      </div> -->
     </div>
     <template v-if="writeComment">
       <section class="write-comment">
@@ -27,7 +27,7 @@
           :rows="4"
           placeholder="의견을 달아주세요!"
         />
-        <el-button @click="addComment">
+        <el-button class="comment-btn" @click="addComment">
           댓글 작성
         </el-button>
       </section>
@@ -35,7 +35,7 @@
         <ul>
           <li v-for="(comment, index) in freeboard.comments" :key="index" class="comment">
             <div class="comment-title">
-              <span>{{ comment.name }}</span> | {{ comment.regdate }}
+              <span>{{ comment.com_name }}</span> | {{ comment.regdate }}
             </div>
             <template v-if="editCommentIdx == comment.idx">
               <el-input
@@ -126,6 +126,14 @@ export default {
     },
     async updateComment ({ comment }) {
       try {
+        // eslint-disable-next-line no-unused-vars
+        const res = await this.$axios.$get('/community/community_comment_update.do', {
+          params: {
+            idx: this.editCommentIdx,
+            comment: this.editCommentValue,
+            user_idx: this.getUserInfo.idx
+          }
+        })
         this.editCommentIdx = null
         this.editCommentValue = null
         await this.GET_FREEBOARD_DETAIL({ idx: this.$route.query.idx })
@@ -145,7 +153,7 @@ export default {
     async removeComment ({ comment }) {
       try {
         if (!window.confirm('댓글을 삭제하시겠습니까?')) { return }
-        await this.$axios.$get('/commnet/delete_comment.do', {
+        await this.$axios.$get('/community/community_comment_delete.do', {
           params: {
             idx: comment.idx,
             user_idx: this.getUserInfo.idx
@@ -159,7 +167,7 @@ export default {
     async removeFreeboard () {
       try {
         if (window.confirm('게시글을 삭제하시겠습니까?')) {
-          const isNotOwnFreeboard = this.getFreeboardDetail.commu_user_idx !== this.getUserInfo.idx
+          const isNotOwnFreeboard = this.getFreeboardDetail.commu_user_idx === this.getUserInfo.user_idx
           if (isNotOwnFreeboard) { return alert('게시글의 작성자만 삭제할 수 있습니다.') }
           const res = await this.$axios.$get('/community/community_delete.do', {
             params: {

@@ -15,12 +15,12 @@
         <br v-show="notice.you_url">
         <br v-show="notice.you_url">
         {{ notice.noti_con }}<br><br>
-        idx: {{ notice.idx }}<br>
+        <!-- idx: {{ notice.idx }}<br>
         regdate: {{ notice.regdate }}<br>
         editdate: {{ notice.editdate }}<br>
         noti_user_idx: {{ notice.noti_user_idx }}<br>
         video_url: {{ notice.video_url }}<br>
-        noti_name: {{ notice.noti_name }}<br>
+        noti_name: {{ notice.noti_name }}<br> -->
         <template v-for="(image, index) in imageList">
           <img
             :key="index"
@@ -30,9 +30,11 @@
           >
         </template>
       </p>
-      <nuxt-link to="/announce-list">
-        목록으로
-      </nuxt-link>
+      <div class="content">
+        <nuxt-link to="/announce-list">
+          목록으로
+        </nuxt-link>
+      </div>
     </section>
   </div>
 </template>
