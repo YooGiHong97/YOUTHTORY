@@ -69,7 +69,7 @@ export default {
       freeboard: state => state.freeboardDetail
     }),
     imageList () {
-      // console.log('file_list', this.freeboard.file_list)
+      // console.log('file_list', this.freeboard.file_list)aa
       return this.freeboard.file_list
     }
   },
