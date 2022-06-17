@@ -22,7 +22,8 @@ export default {
     script: [
       { src: 'https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js', async: true },
       { src: 'https://developers.kakao.com/sdk/js/kakao.js', defer: true },
-      { src: 'https://code.jquery.com/jquery-1.11.3.min.js', defer: true }
+      { src: 'https://code.jquery.com/jquery-1.11.3.min.js', defer: true },
+      { src: '~/assets/js/script.js', body: true }
     ]
   },
 
@@ -31,6 +32,9 @@ export default {
     'element-ui/lib/theme-chalk/index.css',
     '~/assets/style/app.scss',
     'normalize.css/normalize.css'
+  ],
+  script: [
+    '~/assets/js/script.js'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

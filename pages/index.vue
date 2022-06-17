@@ -1,14 +1,6 @@
 <template>
   <div class="main-page">
     <section class="main-page__gnb">
-      <!---------------------------------------------->
-      <!-- 2022-05-23/오늘 방문자 수/유기홍 -->
-      <!-- 2022-05-23/today-hit/yoogihong aa-->
-      <!---------------------------------------------->
-      <div class="today-hit">
-        <p>오늘 총 방문자:<span>{{ count }}</span></p>
-      </div><br>
-      <!---------------------------------------------->
       <div class="d-day">
         D{{ survEndDDay }}
       </div>

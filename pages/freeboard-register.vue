@@ -208,7 +208,7 @@ export default {
         formData.append('user_idx', this.getUserInfo.idx)
         if (this.file_index_to_delete != null) {
           formData.append('del_file', this.file_index_to_delete)
-        }  
+        }
         // const config = { headers: { 'content-type': 'multipart/form-data'} }
         await this.$axios.$post(this.isEditMode ? '/community/community_update.do' : '/community/community_insert.do', formData, this.config)
         this.$router.push(this.file_list_path)
