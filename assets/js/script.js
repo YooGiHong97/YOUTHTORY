@@ -1,4 +1,4 @@
-console.log('HAIAIALAPAL')
+console.log('HAIAIALasdsadsadasdAPAL')
 /// /사용자의 IP 주소
 fetch('https://api.ipify.org?format=json', function (data) {
   // Setting text of element P with id gfg
