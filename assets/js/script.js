@@ -1,12 +1,12 @@
-console.log('HAIAIALasdsadsadasdAPAL')
-/// /사용자의 IP 주소
-fetch('https://api.ipify.org?format=json', function (data) {
+// 사용자의 IP 주소
+$.getJSON('https://api.ipify.org?format=json', function (data) {
   // Setting text of element P with id gfg
+  // $("#gfg").html(data.ip);
   storeIPaddressesToCookies(data.ip)
 })
 
 function generateHitCount () {
-  console.log('Function CALLED')
+  // console.log('Function CALLED')
   const config = {
     headers: {
       Accept: 'application/json'
@@ -16,13 +16,13 @@ function generateHitCount () {
   fetch('https://youthapi.co.kr/visit/visit_record.do', config)
     .then(res => res.json())
     .then((data) => {
-      hitCounter.innerHTML = data
-      console.log(data)
+      // hitCounter.innerHTML = data;
+      // console.log(data);
     })
 }
 
-const hitCounter = document.getElementById('hit-counter')
-hitCounter.style.display = 'none'
+// const hitCounter = document.getElementById("hit-counter");
+// hitCounter.style.display = "none";
 
 const userCookieName = 'returningVisitor'
 checkUserCookie(userCookieName)
@@ -30,7 +30,7 @@ function checkUserCookie (userCookieName) {
   const regEx = new RegExp(userCookieName, 'g')
   const cookieExists = document.cookie.match(regEx)
   if (cookieExists != null) {
-    hitCounter.style.display = 'inline-block'
+    // hitCounter.style.display = "inline-block";
   } else {
     createUserCookie(userCookieName)
   }
@@ -58,10 +58,10 @@ function storeIPaddressesToCookies (ipaddess) {
   const cookies = getCookie(_cookieName)
   // it says some address cookie exists
   if (cookies) {
-    console.log(cookies)
+    // console.log(cookies);
     const cookieArray = cookies.split(',')
-    console.log(cookieArray)
-    console.log(cookieArray.includes(ipaddess))
+    // console.log(cookieArray);
+    // console.log(cookieArray.includes(ipaddess));
     const isIPorIncluded = cookieArray.includes(ipaddess)
     // eslint-disable-next-line no-empty
     if (isIPorIncluded) {
@@ -90,5 +90,3 @@ function getCookie (name) {
   }
   return false
 }
-
-console.log('AAAa')
