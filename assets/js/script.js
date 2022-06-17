@@ -22,7 +22,7 @@ function generateHitCount () {
 }
 
 const hitCounter = document.getElementById('hit-counter')
-// hitCounter.style.display = "none";
+hitCounter.style.display = 'none'
 
 const userCookieName = 'returningVisitor'
 checkUserCookie(userCookieName)
@@ -30,7 +30,7 @@ function checkUserCookie (userCookieName) {
   const regEx = new RegExp(userCookieName, 'g')
   const cookieExists = document.cookie.match(regEx)
   if (cookieExists != null) {
-    // hitCounter.style.display = "inline-block";
+    hitCounter.style.display = 'inline-block'
   } else {
     createUserCookie(userCookieName)
   }
@@ -90,3 +90,5 @@ function getCookie (name) {
   }
   return false
 }
+
+console.log('AAAa')
