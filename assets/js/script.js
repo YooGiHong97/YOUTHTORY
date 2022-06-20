@@ -1,5 +1,5 @@
 // 사용자의 IP 주소
-$.getJSON('https://api.ipify.org?format=json', function (data) {
+fetch('https://api.ipify.org?format=json', function (data) {
   // Setting text of element P with id gfg
   // $("#gfg").html(data.ip);
   storeIPaddressesToCookies(data.ip)
